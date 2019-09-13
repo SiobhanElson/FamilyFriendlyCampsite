@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace FamilyFriendlyCampsite
 {
+    
     public class Program
     {
         public static void Main(string[] args)
