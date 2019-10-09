@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestPlatform.Utilities;
 
-namespace DatabaseTestProject
+namespace TestDataPopulation
 {
 
     public class DatabaseManipulation
