@@ -20,7 +20,7 @@ namespace TestDataPopulation
 
         public async Task<string> GetWordAsync()
         {
-            var response = await client.GetAsync("/word?key=6LW33BWR&number=1");
+            var response = await client.GetAsync("/word?key=5CXDHH4L&number=1");
             string[] result = null;
             if (response.IsSuccessStatusCode) result = await response.Content.ReadAsAsync<string[]>();
 

@@ -11,17 +11,17 @@ namespace TestDataPopulation
     public class DatabaseManipulation
     {
         private readonly IRandomWordProvider _randomWordProvider;
-        private readonly IRandomNumberProvider _randomNumberProvider;
+        RandomNumberProvider randomNumberProvider = new RandomNumberProvider();
 
         public DatabaseManipulation(IRandomWordProvider randomWordProvider)
         {
             _randomWordProvider = randomWordProvider;
         }
 
-        public DatabaseManipulation(IRandomNumberProvider randomNumberProvider)
-        {
-            _randomNumberProvider = randomNumberProvider;
-        }
+        //public DatabaseManipulation(IRandomNumberProvider randomNumberProvider)
+        //{
+        //    _randomNumberProvider = randomNumberProvider;
+        //}
 
         public void DatabaseReader()
         {
@@ -55,7 +55,7 @@ namespace TestDataPopulation
                 }
             }
         }
-        public void DatabaseManipulator()
+        public void InsertRandomRow()
         {
 
             //put in html request
@@ -68,7 +68,7 @@ namespace TestDataPopulation
             string inputCounty = _randomWordProvider.GetWordAsync().Result;
             string inputTown = _randomWordProvider.GetWordAsync().Result;
             string inputWebsite = $"www.{_randomWordProvider.GetWordAsync().Result}.com";
-            string inputPhone = _randomNumberProvider.GetWordAsync().Result;
+            string inputPhone = RandomNumberProvider.RandomMobileNumber(11);
             string inputEmail = _randomWordProvider.GetWordAsync().Result + "@" + _randomWordProvider.GetWordAsync().Result + ".com";
             string inputName = _randomWordProvider.GetWordAsync().Result;
             string insertString = @"insert into dbo.Campsites(Title, Location_County, Location_Town, Contact_Website, Contact_Phone, Contact_Email, Contact_Name) values(@Title, @County, @Town, @Website, @Phone, @Email, @Name)";
