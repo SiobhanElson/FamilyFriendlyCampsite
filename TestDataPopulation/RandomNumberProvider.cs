@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace TestDataPopulation
 {
@@ -29,6 +30,38 @@ namespace TestDataPopulation
         public static string RandomMobileNumber(int length)
         {
             return new string("07" + RandomNumberString(9));
+        }
+
+        public static string RandomNumberSelection()
+        {
+            if (RandomNumberString(9).EndsWith("1"))
+            {
+                return RandomLandlineNumber(11);
+            }
+
+            if (RandomNumberString(9).EndsWith("3"))
+            {
+                return RandomLandlineNumber(11);
+            }
+
+            if (RandomNumberString(9).EndsWith("5"))
+            {
+                return RandomLandlineNumber(11);
+            }
+            if (RandomNumberString(9).EndsWith("7"))
+            {
+                return RandomLandlineNumber(11);
+            }
+            if (RandomNumberString(9).EndsWith("9"))
+            {
+                return RandomLandlineNumber(11);
+            }
+            else
+            {
+                return RandomMobileNumber(11);
+            }
+            
+            
         }
     }
 
