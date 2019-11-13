@@ -5,7 +5,7 @@ namespace TestDataPopulation
 {
     public class RandomNumberProvider
     {
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
 
         public static string RandomNumberString(int length)
         {
@@ -26,16 +26,9 @@ namespace TestDataPopulation
 
         public static string RandomNumberSelection()
         {
-            string[] randomString = { RandomLandlineNumber(11), RandomMobileNumber(11) };
-            int index = random.Next(randomString.Length);
+            string[] randomString = {RandomLandlineNumber(11), RandomMobileNumber(11)};
+            var index = random.Next(randomString.Length);
             return randomString[index];
         }
     }
-
-        //public class Rootobject
-        //{
-        //    public string[] Property1 { get; set; }
-        //}
 }
-
-
