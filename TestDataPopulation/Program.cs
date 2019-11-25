@@ -7,7 +7,7 @@ namespace TestDataPopulation
         public static void Main()
         {
             var databaseManipulation = new DatabaseManipulation(new RandomWordProvider());
-            for (var i = 0; i < 200; i++)
+            for (var i = 0; i < 20; i++)
             {
                 Console.WriteLine($"Creating entry {i + 1}");
                 databaseManipulation.InsertRandomRow();

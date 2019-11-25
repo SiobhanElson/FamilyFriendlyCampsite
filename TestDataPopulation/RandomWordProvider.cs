@@ -38,7 +38,7 @@ namespace TestDataPopulation
         {
             var responseTask =
                 client.GetStringAsync(
-                    "words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=4000&api_key=zrk0a1j7ag65d6r3k6xp0a92gay1d2sb2nanhrjaf0sv77554");
+                    "words.json/randomWords?hasDictionaryDef=true&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=600&api_key=zrk0a1j7ag65d6r3k6xp0a92gay1d2sb2nanhrjaf0sv77554");
 
             var response = responseTask.Result;
             var randomWordResponse = JsonConvert.DeserializeObject<List<RandomWordResponse>>(response);
