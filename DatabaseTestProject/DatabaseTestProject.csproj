@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FamilyFriendlyCampsite\FamilyFriendlyCampsite.csproj" />
     <ProjectReference Include="..\TestDataPopulation\TestDataPopulation.csproj" />
   </ItemGroup>
 

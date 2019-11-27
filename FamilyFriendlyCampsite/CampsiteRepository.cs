@@ -10,27 +10,41 @@ namespace FamilyFriendlyCampsite
     {
         public IEnumerable<Campsite> GetCampsites()
         {
+            var campsitesToReturn = new List<Campsite>();
             var conn = new SqlConnection(
                 "Data Source=campsitefinder.database.windows.net;Initial Catalog=CampsiteFinder;User ID=Rob;Password=R0bp@ssw0rd123!;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             SqlDataReader rdr = null;
+
             try
             {
                 conn.Open();
-                var command = new SqlCommand("select * from dbo.Campsites", conn);
+                using (var command = new SqlCommand("select * from dbo.Campsites", conn))
+                {
+                    rdr = command.ExecuteReader();
 
-                rdr = command.ExecuteReader();
-
-                while (rdr.Read())
-                    // write the data on to the screen
-                    Console.WriteLine("{0} \t | {1} \t | {2} \t | {3} \t | {4} \t | {5} \t | {6}", rdr[0], rdr[1],
-                        rdr[2], rdr[3], rdr[4], rdr[5], rdr[6]); 
-                return GetCampsites();
+                    while (rdr.Read())
+                    {
+                        campsitesToReturn.Add(new Campsite
+                        {
+                            Id = (int) rdr[0],
+                            Title = (string) rdr[1],
+                            LocationCounty = (string) rdr[2],
+                            LocationTown = (string) rdr[3],
+                            ContactWebsite = (string) rdr[4],
+                            ContactPhone = (string) rdr[5],
+                            ContactEmail = (string) rdr[6],
+                            ContactName = (string) rdr[7]
+                        });
+                    }
+                }
             }
             finally
             {
-                if (rdr != null) rdr.Close();
+                rdr?.Close();
                 if (conn != null) conn.Close();
             }
+
+            return campsitesToReturn;
         }
     }
 }
