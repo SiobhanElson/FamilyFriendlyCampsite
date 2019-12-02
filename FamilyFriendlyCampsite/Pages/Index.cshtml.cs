@@ -9,9 +9,17 @@ namespace FamilyFriendlyCampsite.Pages
 {
     public class IndexModel : PageModel
     {
+        private CampsiteRepository campsiteRepository;
+        public IEnumerable<Campsite> Campsites { get; private set; }
+
+        public IndexModel()
+        {
+            campsiteRepository = new CampsiteRepository();
+        }
+
         public void OnGet()
         {
-
+            Campsites = campsiteRepository.GetCampsites();
         }
     }
 }

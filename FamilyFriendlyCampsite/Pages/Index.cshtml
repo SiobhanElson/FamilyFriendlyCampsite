@@ -5,6 +5,41 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the Family Friendly Campsite Webpage</h1>
+    <style>
+        table, th, td {
+            border: 3px solid teal;
+        }
+        th, td {
+            padding: 10px;
+        }
+        th {
+            background-color: #add8e6;
+        }
+    </style>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>County</th>
+            <th>Town</th>
+            <th>Website</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Contact Name</th>
+        </tr>
+    @foreach (var campsite in Model.Campsites)
+    {
+
+            <tr>
+                <td>@campsite.Title</td>
+                <td>@campsite.LocationCounty</td>
+                <td>@campsite.LocationTown</td>
+                <td>@campsite.ContactWebsite</td>
+                <td>@campsite.ContactPhone</td>
+                <td>@campsite.ContactEmail</td>
+                <td>@campsite.ContactName</td>
+            </tr>
+    }
+    </table>
 </div>
