@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace FamilyFriendlyCampsite
 {
-    public class CampsiteRepository
+    public interface ICampsiteRepository
+    {
+        IEnumerable<Campsite> GetCampsites();
+    }
+
+    public class CampsiteRepository : ICampsiteRepository
     {
         public IEnumerable<Campsite> GetCampsites()
         {

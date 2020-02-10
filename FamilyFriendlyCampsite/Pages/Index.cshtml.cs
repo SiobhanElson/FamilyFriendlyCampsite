@@ -1,25 +1,21 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FamilyFriendlyCampsite.Pages
 {
     public class IndexModel : PageModel
     {
-        private CampsiteRepository campsiteRepository;
+        private ICampsiteRepository CampsiteRepository { get; }
         public IEnumerable<Campsite> Campsites { get; private set; }
 
-        public IndexModel()
+        public IndexModel(ICampsiteRepository campsiteRepository)
         {
-            campsiteRepository = new CampsiteRepository();
+            CampsiteRepository = campsiteRepository;
         }
 
         public void OnGet()
         {
-            Campsites = campsiteRepository.GetCampsites();
+            Campsites = CampsiteRepository.GetCampsites();
         }
     }
 }
