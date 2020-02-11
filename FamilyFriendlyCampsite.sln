@@ -5,11 +5,6 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FamilyFriendlyCampsite", "FamilyFriendlyCampsite\FamilyFriendlyCampsite.csproj", "{426370BC-BED7-4D55-98E0-513F36947806}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseTestProject", "DatabaseTestProject\DatabaseTestProject.csproj", "{B4F67C11-21B5-4C36-AF98-F3842E6F52A0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{426370BC-BED7-4D55-98E0-513F36947806} = {426370BC-BED7-4D55-98E0-513F36947806}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDataPopulation", "TestDataPopulation\TestDataPopulation.csproj", "{7FF37D5F-A7D5-4D6D-B637-16C45B8C7F26}"
 EndProject
 Global
@@ -22,10 +17,6 @@ Global
 		{426370BC-BED7-4D55-98E0-513F36947806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{426370BC-BED7-4D55-98E0-513F36947806}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{426370BC-BED7-4D55-98E0-513F36947806}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4F67C11-21B5-4C36-AF98-F3842E6F52A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4F67C11-21B5-4C36-AF98-F3842E6F52A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4F67C11-21B5-4C36-AF98-F3842E6F52A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4F67C11-21B5-4C36-AF98-F3842E6F52A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7FF37D5F-A7D5-4D6D-B637-16C45B8C7F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7FF37D5F-A7D5-4D6D-B637-16C45B8C7F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF37D5F-A7D5-4D6D-B637-16C45B8C7F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
