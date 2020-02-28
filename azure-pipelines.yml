@@ -67,7 +67,7 @@ stages:
 
       - task: CmdLine@2
         inputs:
-          script: 'cypress run'
+          script: 'npx cypress run'
 
       - task: PublishTestResults@2
         condition: succeededOrFailed()
