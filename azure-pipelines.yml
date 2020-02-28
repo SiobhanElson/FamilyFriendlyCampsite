@@ -1,19 +1,40 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
+#You need to give Sara cake
 trigger:
 - master
 
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+#Build web project
+- stage:
+  displayName: "Build web project"
+  jobs:
+  - job:
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'publish'
+        publishWebProjects: true
+        arguments: '--output $(Build.ArtifactStagingDirectory)'
+
+
+# Deploy
+- stage:
+  displayName: "Deploy to Dev"
+  jobs:
+  - job:
+    steps:
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: 'Visual Studio Enterprise(ec3f29ba-2f6c-490c-a0ba-1c962302296f)'
+        appType: 'webApp'
+        appName: 'FamilyFriendlyCampsite'
+        package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        deploymentMethod: 'auto'
