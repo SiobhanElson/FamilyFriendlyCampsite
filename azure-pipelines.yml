@@ -14,16 +14,24 @@ stages:
   - job:
     steps:
     - task: DotNetCoreCLI@2
+      displayName: "Dotnet build"
       inputs:
         command: 'build'
         projects: '**/*.csproj'
 
     - task: DotNetCoreCLI@2
+      displayName: "Dotnet publish"
       inputs:
         command: 'publish'
         publishWebProjects: true
         arguments: '--output $(Build.ArtifactStagingDirectory)'
 
+    - task: PublishBuildArtifacts@1
+      displayName: "Publish build artifacts"
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
 # Deploy
 - stage:
@@ -31,10 +39,20 @@ stages:
   jobs:
   - job:
     steps:
+
+    - task: DownloadBuildArtifacts@0
+      displayName: "Get build artifact"
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'drop'
+        downloadPath: '$(System.ArtifactsDirectory)'
+
     - task: AzureWebApp@1
+      displayName: "Publish Web App"
       inputs:
         azureSubscription: 'Visual Studio Enterprise(ec3f29ba-2f6c-490c-a0ba-1c962302296f)'
         appType: 'webApp'
         appName: 'FamilyFriendlyCampsite'
-        package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+        package: '$(System.ArtifactsDirectory)/**/*.zip'
         deploymentMethod: 'auto'
