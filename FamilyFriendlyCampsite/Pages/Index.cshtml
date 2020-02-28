@@ -31,15 +31,17 @@
     @foreach (var campsite in Model.Campsites)
     {
 
-            <tr>
-                <td>@campsite.Title</td>
-                <td>@campsite.LocationCounty</td>
-                <td>@campsite.LocationTown</td>
-                <td><a href="https://@campsite.ContactWebsite">@campsite.ContactWebsite</a></td>
-                <td>@campsite.ContactPhone</td>
-                <td>@campsite.ContactEmail</td>
-                <td>@campsite.ContactName</td>
-            </tr>
+        <tr>
+            <td>
+                <a asp-page="/@campsite.Title" target="_blank">@campsite.Title</a> 
+            </td>
+            <td>@campsite.LocationCounty</td>
+            <td>@campsite.LocationTown</td>
+            <td><a href="https://@campsite.ContactWebsite">@campsite.ContactWebsite</a></td>
+            <td>@campsite.ContactPhone</td>
+            <td>@campsite.ContactEmail</td>
+            <td>@campsite.ContactName</td>
+        </tr>
     }
     </table>
 </div>
