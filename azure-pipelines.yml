@@ -33,11 +33,12 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
-# Deploy
+# Deploy and test
 - stage:
   displayName: "Deploy to Dev"
   jobs:
   - job:
+    displayName: "Deploy website"
     steps:
 
     - task: DownloadBuildArtifacts@0
@@ -56,3 +57,22 @@ stages:
         appName: 'FamilyFriendlyCampsite'
         package: '$(System.ArtifactsDirectory)/**/*.zip'
         deploymentMethod: 'auto'
+
+  - job: 
+    displayName: "Run UI tests"
+    steps:
+      - task: CmdLine@2
+        inputs:
+          script: 'npm install cypress --save-dev'
+
+      - task: CmdLine@2
+        inputs:
+          script: 'cypress run'
+
+      - task: PublishTestResults@2
+        condition: succeededOrFailed()
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: 'jest.xml'
+          failTaskOnFailedTests: true
+        displayName: Publish test results
